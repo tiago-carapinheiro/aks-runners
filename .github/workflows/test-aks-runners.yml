@@ -1,0 +1,19 @@
+name: Test self-hosted runners in AKS
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test-runner:
+    name: Validate self-hosted AKS runner
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run echo
+        run: |
+          echo "Running on self-hosted Kubernetes runner!"
